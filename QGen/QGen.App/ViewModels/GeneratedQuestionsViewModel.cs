@@ -1,0 +1,34 @@
+﻿using System.Collections.ObjectModel;
+
+namespace QGen.App.ViewModels;
+public class GeneratedQuestionsViewModel : BaseViewModel
+{
+    public ObservableCollection<string> GeneratedQuestions { get; private set; } = new ObservableCollection<string>();
+
+    public GeneratedQuestionsViewModel()
+    {
+    }
+
+    public void AddQuestion(string question)
+    {
+        GeneratedQuestions.Add(question);
+    }
+
+    public void RemoveQuestion(string question)
+    {
+        GeneratedQuestions.Remove(question);
+    }
+
+    public void RemoveQuestion(int index)
+    {
+        if(index > -1 && index < GeneratedQuestions.Count)
+        {
+            GeneratedQuestions.RemoveAt(index);
+        }
+    }
+
+    public void ClearQuestions()
+    {
+        GeneratedQuestions.Clear();
+    }
+}

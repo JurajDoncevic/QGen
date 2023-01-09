@@ -1,0 +1,29 @@
+﻿<Page x:Class="QGen.App.Pages.QuestionGenerationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QGen.App.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="QuestionGenerationPage"
+      DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" MinHeight="20"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox ItemsSource="{Binding AvailableQuestionTypes}" DisplayMemberPath="DisplayName" SelectedValuePath="QuestionType" SelectedValue="{Binding SelectedQuestionType}"></ComboBox>
+        <Frame x:Name="QueryGenerationParameters" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1">
+
+        </Frame>
+        <Frame x:Name="GeneratedQuestions" Grid.RowSpan="2">
+
+        </Frame>
+    </Grid>
+</Page>
