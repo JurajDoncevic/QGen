@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QGen.App"
-        mc:Ignorable="d"
-        Title="QGen" Height="500" Width="800" MinHeight="450" MinWidth="600"
+        mc:Ignorable="d" Style="{StaticResource WinAll}"
+        Title="QGen" Height="500" Width="800" MinHeight="600" MinWidth="750"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" MinHeight="20"/>
+            <RowDefinition Height="30" MinHeight="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">

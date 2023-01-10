@@ -8,11 +8,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuestionGenerationPage"
+      Style="{StaticResource PageAll}"
       DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}" ShowsNavigationUI="False">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" MinHeight="20"/>
+            <RowDefinition Height="30" MinHeight="30"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -20,13 +21,14 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Padding="0,0,0,0">Question template:</Label>
-        <ComboBox ItemsSource="{Binding AvailableQuestionTypes}" SelectedValue="{Binding SelectedQuestionType}" Width="200" HorizontalAlignment="Left" Margin="120,0,0,0">
+        <ComboBox ItemsSource="{Binding AvailableQuestionTypes}" SelectedValue="{Binding SelectedQuestionType}" Width="150" HorizontalAlignment="Left" Margin="150,0,0,0">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding QuestionTypeSelectionCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox,Mode=FindAncestor}, Path=SelectedValue}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
+        
         <Frame Name="QuestionQueryEditorFrame" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Content="{Binding Path=CurrentQueryEditorPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden">
 
         </Frame>

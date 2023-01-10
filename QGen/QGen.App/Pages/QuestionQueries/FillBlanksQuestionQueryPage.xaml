@@ -7,7 +7,8 @@
       xmlns:utils="clr-namespace:QGen.App.Utils"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="FillBlanksQuestionQueryPage"      
+      Title="FillBlanksQuestionQueryPage"
+      Style="{StaticResource PageAll}"
       DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}">
 
     <Page.Resources>
@@ -32,27 +33,27 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">Education level:</Label>
-            <TextBox Text="{Binding EducationLevel}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="18"></TextBox>
+            <TextBox Text="{Binding EducationLevel}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" ></TextBox>
 
             <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Subject:</Label>
-            <TextBox Text="{Binding Subject}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="18"></TextBox>
+            <TextBox Text="{Binding Subject}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" ></TextBox>
 
             <Label Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center">Topic:</Label>
-            <TextBox Text="{Binding Topic}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="18"></TextBox>
+            <TextBox Text="{Binding Topic}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" ></TextBox>
 
-            <Button Command="{Binding RunQueryCommand}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="2,2,2,2" Margin="5,0,0,0">Run query</Button>
+            <Button Style="{StaticResource PrimaryButton}" Command="{Binding RunQueryCommand}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5,0,0,0">Run query</Button>
 
             <TextBlock Text="{Binding OperationOutcomeMessage}" TextWrapping="Wrap" Foreground="{Binding IsOperationSuccessful, Converter={StaticResource ResourceKey=boolColorConv}}"  Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="30"></TextBlock>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="20" MinHeight="25"/>
+                <RowDefinition Height="30" MinHeight="30"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="20" MinHeight="25"/>
+                <RowDefinition Height="50" MinHeight="50"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0">Query preview:</Label>
-            <TextBlock Margin="5,0,0,0" Grid.Row="1" Text="{Binding QueryPreview}" TextWrapping="Wrap"></TextBlock>
-            <Button Command="{Binding PreviewQueryCommand}" Grid.Row="2" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="2,2,2,2" Margin="5,0,0,0">Preview query</Button>
+            <TextBox IsReadOnly="True" Margin="5,0,5,0" Grid.Row="1" Text="{Binding QueryPreview, Mode=OneWay}" TextWrapping="Wrap"></TextBox>
+            <Button Style="{StaticResource PrimaryButton}" Command="{Binding PreviewQueryCommand}" Grid.Row="2" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="5,0,0,0">Preview query</Button>
         </Grid>
     </Grid>
 </local:QuestionQueryPage>

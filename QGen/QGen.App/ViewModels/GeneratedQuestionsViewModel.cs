@@ -9,6 +9,15 @@ public class GeneratedQuestionsViewModel : BaseViewModel
 
     public GeneratedQuestionsViewModel()
     {
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
+        GeneratedQuestions.Add("Sastavi pitanje iz aaa aaa iz teme \"aaaa\". Neka je pitanje oblika nadopune rečenice. Nadopunjuje se s jednom ili dvije riječi.");
     }
 
     public void AddQuestion(string question)

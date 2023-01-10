@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ApiSettingsPage"
+      Style="{StaticResource PageAll}"
       DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}">
 
     <Grid>
@@ -24,6 +25,6 @@
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">API key:</Label>
         <TextBox Text="{Binding ApiKey}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="5,0,0,0"></TextBox>
 
-        <Button Command="{Binding SaveChangesCommand}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="2,2,2,2">Save changes</Button>
+        <Button Style="{StaticResource PrimaryButton}" Command="{Binding SaveChangesCommand}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" >Save changes</Button>
     </Grid>
 </Page>
