@@ -24,5 +24,5 @@ public class MultiChoiceQuestionQuery : QuestionQuery
 
     public override string GetText()
         => base.GetText().Replace("{answerAmount}", AnswerAmount.ToString())
-                         .Replace("{correctAnswerAmount}", CorrectAnswersAmount.ToString());
+                         .Replace("{correctAnswersAmount}", CorrectAnswersAmount.ToString());
 }
