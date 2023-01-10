@@ -9,23 +9,6 @@ public class GeneratedQuestionsViewModel : BaseViewModel
 
     public GeneratedQuestionsViewModel()
     {
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
-        GeneratedQuestions.Add("TEST");
     }
 
     public void AddQuestion(string question)
