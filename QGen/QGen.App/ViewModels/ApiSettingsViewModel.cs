@@ -1,5 +1,5 @@
 ﻿using QGen.App.Commands;
-using QGen.Providers.OpenAPI;
+using QGen.Providers.OpenAI;
 using System.ComponentModel;
 
 namespace QGen.App.ViewModels;

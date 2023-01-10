@@ -1,18 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using QGen.App.Pages;
 using QGen.App.Settings;
-using QGen.App.ViewModels;
 using QGen.Providers;
-using QGen.Providers.OpenAPI;
+using QGen.Providers.OpenAI;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace QGen.App;

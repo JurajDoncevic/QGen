@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QGen.Providers.OpenAPI;
+namespace QGen.Providers.OpenAI;
 public class ApiSettings
 {
     public string ApiKey { get; set; } = "";

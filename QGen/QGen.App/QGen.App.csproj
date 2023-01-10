@@ -40,8 +40,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\QGen.Base\QGen.Base.csproj" />
 		<ProjectReference Include="..\QGen.Domain\QGen.Domain.csproj" />
-		<ProjectReference Include="..\QGen.Providers.OpenAPI\QGen.Providers.OpenAPI.csproj" />
+		<ProjectReference Include="..\QGen.Providers.OpenAI\QGen.Providers.OpenAI.csproj" />
 		<ProjectReference Include="..\QGen.Providers\QGen.Providers.csproj" />
 	</ItemGroup>
 

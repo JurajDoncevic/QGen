@@ -1,4 +1,4 @@
-﻿using QGen.Providers.OpenAPI;
+﻿using QGen.Providers.OpenAI;
 
 namespace QGen.App.Settings;
 public class AppSettings

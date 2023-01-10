@@ -5,7 +5,7 @@ using OpenAI.GPT3.ObjectModels;
 using QGen.Base;
 using QGen.Domain.Queries;
 
-namespace QGen.Providers.OpenAPI;
+namespace QGen.Providers.OpenAI;
 
 public class QuestionProvider : IQuestionProvider
 {
