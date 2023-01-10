@@ -6,20 +6,20 @@
       xmlns:local="clr-namespace:QGen.App.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="400"
-      Title="GeneratedQuestionsPage">
+      Title="GeneratedQuestionsPage"
+      DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding GeneratedQuestions}" Grid.Row="0">
+        <DataGrid ItemsSource="{Binding GeneratedQuestions}" Grid.Row="0" AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="1*">
-                    <DataGridTemplateColumn.Header>Generated questions</DataGridTemplateColumn.Header>
+                <DataGridTemplateColumn Width="1*" Header="Generated questions" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox IsReadOnly="True" Text="{Binding .}" MinLines="2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"></TextBox>
+                            <TextBox Text="{Binding Path=.}" TextWrapping="Wrap" MinHeight="50" AcceptsReturn="True" MinLines="5" ></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

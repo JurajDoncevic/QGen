@@ -13,12 +13,12 @@ public class QuestionGenerationViewModel : BaseViewModel
 {
     private readonly IServiceProvider _serviceProvider;
 
-    private readonly GeneratedQuestionsPage _generatedQuestionsPage;
+    public GeneratedQuestionsPage GeneratedQuestionsPage { get; private set; }
 
     public QuestionGenerationViewModel(IServiceProvider serviceProvider) : base()
     {
         _serviceProvider = serviceProvider;
-        _generatedQuestionsPage = _serviceProvider.GetService<GeneratedQuestionsPage>() ?? throw new Exception("Couldn't resovle generated questions page service.");
+        GeneratedQuestionsPage = _serviceProvider.GetService<GeneratedQuestionsPage>() ?? throw new Exception("Couldn't resovle generated questions page service.");
     }
 
 
@@ -55,6 +55,6 @@ public class QuestionGenerationViewModel : BaseViewModel
 
     private void BaseViewModel_OnQuestionGenerated(object? sender, QuestionQueries.QuestionGeneratedEventArgs e)
     {
-        _generatedQuestionsPage.AddGeneratedQuestion(e.GeneratedQuestion);
+        GeneratedQuestionsPage.AddGeneratedQuestion(e.GeneratedQuestion);
     }
 }

@@ -1,12 +1,31 @@
-﻿using System.Collections.ObjectModel;
+﻿using QGen.App.Commands;
+using System.Collections.ObjectModel;
 
 namespace QGen.App.ViewModels;
 public class GeneratedQuestionsViewModel : BaseViewModel
 {
     public ObservableCollection<string> GeneratedQuestions { get; private set; } = new ObservableCollection<string>();
+    public RelayCommand ClearHistoryCommand => new RelayCommand(o => ClearQuestions());
 
     public GeneratedQuestionsViewModel()
     {
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
+        GeneratedQuestions.Add("TEST");
     }
 
     public void AddQuestion(string question)
