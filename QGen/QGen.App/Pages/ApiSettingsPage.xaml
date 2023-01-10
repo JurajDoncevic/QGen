@@ -16,6 +16,9 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -25,6 +28,15 @@
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">API key:</Label>
         <TextBox Text="{Binding ApiKey}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="5,0,0,0"></TextBox>
 
-        <Button Style="{StaticResource PrimaryButton}" Command="{Binding SaveChangesCommand}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" >Save changes</Button>
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">TopP:</Label>
+        <TextBox Text="{Binding TopP}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="5,0,0,0"></TextBox>
+
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Temperature:</Label>
+        <TextBox Text="{Binding Temperature}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="5,0,0,0"></TextBox>
+
+        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Maximum tokens:</Label>
+        <TextBox Text="{Binding MaxTokens}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="5,0,0,0"></TextBox>
+        
+        <Button Style="{StaticResource PrimaryButton}" Command="{Binding SaveChangesCommand}" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" >Save changes</Button>
     </Grid>
 </Page>

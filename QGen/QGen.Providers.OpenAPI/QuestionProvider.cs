@@ -1,4 +1,7 @@
-﻿using OpenAI_API;
+﻿using OpenAI.GPT3;
+using OpenAI.GPT3.Managers;
+using OpenAI.GPT3.ObjectModels.RequestModels;
+using OpenAI.GPT3.ObjectModels;
 using QGen.Base;
 using QGen.Domain.Queries;
 
@@ -7,32 +10,38 @@ namespace QGen.Providers.OpenAPI;
 public class QuestionProvider : IQuestionProvider
 {
     private readonly ApiSettings _apiSettings;
-    private readonly OpenAIAPI _api;
+    private readonly OpenAIService _api;
+
     public QuestionProvider(ApiSettings apiSettings)
     {
         _apiSettings = apiSettings ?? throw new ArgumentNullException(nameof(apiSettings));
-        _api = new OpenAI_API.OpenAIAPI(apiSettings.ApiKey, engine: Engine.Davinci);
+        _api = new OpenAIService(new OpenAiOptions() { ApiKey = _apiSettings.ApiKey });
     }
-
 
     public async Task<Result<string>> FetchQuestion(QuestionQuery questionQuery)
     {
         try
         {
-            var result = await _api.Completions.CreateCompletionAsync(questionQuery.GetText(), temperature: _apiSettings.Temperature, max_tokens: _apiSettings.MaxTokens, top_p: _apiSettings.TopP);
-            var resultQuestion = result.Completions.FirstOrDefault()?.Text;
+            var completionResult = await _api.Completions.CreateCompletion(
+                new CompletionCreateRequest()
+                {
+                    Prompt = questionQuery.GetText(),
+                    TopP = _apiSettings.TopP,
+                    Temperature = _apiSettings.Temperature,
+                    MaxTokens = _apiSettings.MaxTokens
+                },
+                Models.TextDavinciV3);
 
-            if (resultQuestion != null)
+            if (completionResult.Successful)
             {
-                return Results.OnSuccess<string>(resultQuestion);
+                return Results.OnSuccess<string>(completionResult.Choices.FirstOrDefault()!.Text);
             }
             else
             {
-                return Results.OnFailure<string>("Couldn't retrieve first choice");
+                return Results.OnFailure<string>(completionResult.Error!.Message);
             }
-            
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             return Results.OnException<string>(ex);
         }

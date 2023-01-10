@@ -20,7 +20,7 @@
                 <DataGridTemplateColumn Width="5*" Header="Generated questions" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Path=.,Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" MinHeight="50" AcceptsReturn="True" MinLines="5" ></TextBox>
+                            <TextBox Text="{Binding Path=.,Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" MinHeight="50" AcceptsReturn="True" MinLines="3" ></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
