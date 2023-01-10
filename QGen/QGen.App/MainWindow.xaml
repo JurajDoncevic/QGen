@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:QGen.App"
         mc:Ignorable="d" Style="{StaticResource WinAll}"
         Title="QGen" Height="500" Width="800" MinHeight="600" MinWidth="750"
+        Icon="pack://application:,,,/QGen.App;component/Resources/qgen_icon.ico"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
     <Grid>
         <Grid.RowDefinitions>
