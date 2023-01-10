@@ -1,4 +1,5 @@
-﻿using QGen.App.ViewModels;
+﻿using QGen.App.Commands;
+using QGen.App.ViewModels;
 using System.Windows.Controls;
 
 namespace QGen.App.Pages;
@@ -7,16 +8,24 @@ namespace QGen.App.Pages;
 /// </summary>
 public partial class GeneratedQuestionsPage : Page
 {
-    internal GeneratedQuestionsViewModel ViewModel { get; private set; }
+    public GeneratedQuestionsViewModel ViewModel { get; private set; }
 
-    internal GeneratedQuestionsPage(GeneratedQuestionsViewModel viewModel)
+    public RelayCommand ClearHistoryCommand
+        => new RelayCommand(o => ClearGeneratedQuestions());
+
+    public GeneratedQuestionsPage(GeneratedQuestionsViewModel viewModel)
     {
         ViewModel = viewModel;
         InitializeComponent();
     }
 
-    internal void AddGeneratedQuestion(string question)
+    public void AddGeneratedQuestion(string question)
     {
         ViewModel.AddQuestion(question);
+    }
+
+    public void ClearGeneratedQuestions()
+    {
+        ViewModel.ClearQuestions();
     }
 }

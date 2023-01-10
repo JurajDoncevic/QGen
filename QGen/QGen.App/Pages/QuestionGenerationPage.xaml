@@ -4,10 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QGen.App.Pages"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuestionGenerationPage"
-      DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}">
+      DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}" ShowsNavigationUI="False">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,11 +19,18 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox ItemsSource="{Binding AvailableQuestionTypes}" DisplayMemberPath="DisplayName" SelectedValuePath="QuestionType" SelectedValue="{Binding SelectedQuestionType}"></ComboBox>
-        <Frame x:Name="QueryGenerationParameters" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1">
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Padding="0,0,0,0">Question template:</Label>
+        <ComboBox ItemsSource="{Binding AvailableQuestionTypes}" SelectedValue="{Binding SelectedQuestionType}" Width="200" HorizontalAlignment="Left" Margin="120,0,0,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding QuestionTypeSelectionCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox,Mode=FindAncestor}, Path=SelectedValue}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <Frame Name="QuestionQueryEditorFrame" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Content="{Binding Path=CurrentQueryEditorPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden">
 
         </Frame>
-        <Frame x:Name="GeneratedQuestions" Grid.RowSpan="2">
+        <Frame Name="GeneratedQuestions" Grid.RowSpan="2" NavigationUIVisibility="Hidden">
 
         </Frame>
     </Grid>

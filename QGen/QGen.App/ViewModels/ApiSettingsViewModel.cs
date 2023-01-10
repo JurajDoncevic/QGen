@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using QGen.App.Commands;
 using QGen.Providers.OpenAPI;
 using System.ComponentModel;
 
@@ -9,7 +9,7 @@ public class ApiSettingsViewModel : BaseViewModel, INotifyPropertyChanged
 
     public string ApiKey { get; set; }
 
-    public RelayCommand SaveChangesCommand => new RelayCommand(SaveChanges);
+    public RelayCommand SaveChangesCommand => new RelayCommand(o => SaveChanges());
 
     public ApiSettingsViewModel(ApiSettings apiSettings)
     {

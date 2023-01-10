@@ -29,4 +29,9 @@ public abstract class QuestionQuery
     public string EducationLevel { get => _educationLevel; set => _educationLevel = value; }
     public string Subject { get => _subject; set => _subject = value; }
     public string Topic { get => _topic; set => _topic = value; }
+
+    public virtual string GetText()
+        => TemplateString.Replace("{educationLevel}", EducationLevel)
+                         .Replace("{subject}", Subject)
+                         .Replace("{topic}", Topic);
 }

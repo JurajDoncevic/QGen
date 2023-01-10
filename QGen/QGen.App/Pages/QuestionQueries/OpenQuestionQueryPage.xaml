@@ -1,0 +1,58 @@
+﻿<local:QuestionQueryPage x:Class="QGen.App.Pages.QuestionQueries.OpenQuestionQueryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QGen.App.Pages.QuestionQueries"
+      xmlns:util="clr-namespace:QGen.App.Utils"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OpenQuestionQueryPage"      
+      DataContext="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ViewModel}">
+    <Page.Resources>
+        <util:BoolToColorConverter x:Key="boolColorConv"></util:BoolToColorConverter>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center">Education level:</Label>
+            <TextBox Text="{Binding EducationLevel}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="18"></TextBox>
+
+            <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">Subject:</Label>
+            <TextBox Text="{Binding Subject}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="18"></TextBox>
+
+            <Label Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center">Topic:</Label>
+            <TextBox Text="{Binding Topic}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="18"></TextBox>
+
+            <Button Command="{Binding RunQueryCommand}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="2,2,2,2" Margin="5,0,0,0">Run query</Button>
+
+            <TextBlock Text="{Binding OperationOutcomeMessage}" TextWrapping="Wrap" Foreground="{Binding IsOperationSuccessful, Converter={StaticResource ResourceKey=boolColorConv}}"  Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="30"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" MinHeight="25"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="20" MinHeight="25"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0">Query preview:</Label>
+            <TextBlock Grid.Row="1" Text="{Binding QueryPreview}" TextWrapping="Wrap" Margin="5,0,0,0"></TextBlock>
+            <Button Command="{Binding PreviewQueryCommand}" Grid.Row="2" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="2,2,2,2" Margin="5,0,0,0">Preview query</Button>
+        </Grid>
+    </Grid>
+</local:QuestionQueryPage>

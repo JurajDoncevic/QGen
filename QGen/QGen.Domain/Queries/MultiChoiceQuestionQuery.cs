@@ -21,4 +21,8 @@ public class MultiChoiceQuestionQuery : QuestionQuery
 
     public int AnswerAmount { get => _answerAmount; set => _answerAmount = value; }
     public int CorrectAnswersAmount { get => _correctAnswersAmount; set => _correctAnswersAmount = value; }
+
+    public override string GetText()
+        => base.GetText().Replace("{answerAmount}", AnswerAmount.ToString())
+                         .Replace("{correctAnswerAmount}", CorrectAnswersAmount.ToString());
 }

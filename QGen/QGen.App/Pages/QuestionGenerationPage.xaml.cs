@@ -14,5 +14,4 @@ public partial class QuestionGenerationPage : Page
         ViewModel = viewModel;
         InitializeComponent();
     }
-
 }

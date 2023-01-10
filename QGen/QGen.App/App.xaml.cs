@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -35,7 +36,7 @@ public partial class App : Application
         var builder =
             new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.Development.json", false);
+            .AddJsonFile("appsettings.json", false);
 
         return builder.Build();
     }
@@ -54,20 +55,16 @@ public partial class App : Application
         // add settings as singletons - api settings should be editable
         services.AddSingleton<AppSettings>(provider => appSettings);
         services.AddSingleton<ApiSettings>(provider => provider.GetService<AppSettings>()!.ApiSettings);
+        services.AddSingleton<QuestionTemplates>(provider => provider.GetService<AppSettings>()!.QuestionTemplates);
         
         // add providers
         services.AddTransient<IQuestionProvider, QuestionProvider>(provider => new QuestionProvider(provider.GetService<ApiSettings>()!));
 
         // add viewModels
-        services.AddTransient<ApiSettingsViewModel>();
-        services.AddTransient<GeneratedQuestionsViewModel>();
-        services.AddTransient<QuestionGenerationViewModel>();
+        services.LoadViewModelsFromAssembly();
 
         // add pages
-        services.AddTransient<AboutPage>();
-        services.AddTransient<ApiSettingsPage>();
-        services.AddTransient<GeneratedQuestionsPage>();
-        services.AddTransient<QuestionGenerationPage>();
+        services.LoadPagesFromAssembly();
 
         // add main application window
         services.AddSingleton<MainWindow>();
@@ -80,4 +77,19 @@ public partial class App : Application
         var mainWindow = _serviceProvider.GetService<MainWindow>();
         mainWindow.Show();
     }
+}
+
+public static class AppCreationHelpers
+{
+    public static IServiceCollection LoadPagesFromAssembly(this IServiceCollection services)
+        => AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(assembly => assembly.GetTypes())
+            .Where(type => type.Name.EndsWith("Page") && !type.IsAbstract)
+            .Aggregate(services, (ser, type) => ser.AddTransient(type));
+
+    public static IServiceCollection LoadViewModelsFromAssembly(this IServiceCollection services)
+        => AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(assembly => assembly.GetTypes())
+            .Where(type => type.Name.EndsWith("ViewModel") && !type.IsAbstract)
+            .Aggregate(services, (ser, type) => ser.AddTransient(type));
 }

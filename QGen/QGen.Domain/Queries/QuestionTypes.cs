@@ -1,4 +1,6 @@
-﻿namespace QGen.Domain.Queries;
+﻿using System.ComponentModel;
+
+namespace QGen.Domain.Queries;
 
 public enum QuestionTypes
 {

@@ -1,5 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using QGen.App.Commands;
 using QGen.App.Pages;
 using System;
 using System.ComponentModel;
@@ -13,9 +13,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public RelayCommand ShowApiSettingsCommand => new RelayCommand(ShowApiSettings);
-    public RelayCommand ShowAboutCommand => new RelayCommand(ShowAbout);
-    public RelayCommand ShowQuestionGenerationCommand => new RelayCommand(ShowQuestionGeneration);
+    public RelayCommand ShowApiSettingsCommand => new RelayCommand(o => ShowApiSettings());
+    public RelayCommand ShowAboutCommand => new RelayCommand(o => ShowAbout());
+    public RelayCommand ShowQuestionGenerationCommand => new RelayCommand(o => ShowQuestionGeneration());
 
     public MainWindow(IServiceProvider serviceProvider)
     {
