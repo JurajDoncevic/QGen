@@ -1,7 +1,7 @@
-﻿using OpenAI.GPT3;
-using OpenAI.GPT3.Managers;
-using OpenAI.GPT3.ObjectModels.RequestModels;
-using OpenAI.GPT3.ObjectModels;
+﻿using OpenAI;
+using OpenAI.Managers;
+using OpenAI.ObjectModels;
+using OpenAI.ObjectModels.RequestModels;
 using QGen.Base;
 using QGen.Domain.Queries;
 
@@ -22,19 +22,20 @@ public class QuestionProvider : IQuestionProvider
     {
         try
         {
-            var completionResult = await _api.Completions.CreateCompletion(
-                new CompletionCreateRequest()
+            var completionResult = await _api.ChatCompletion.CreateCompletion(new ChatCompletionCreateRequest
+            {
+                Messages = new List<ChatMessage>
                 {
-                    Prompt = questionQuery.GetText(),
-                    TopP = _apiSettings.TopP,
-                    Temperature = _apiSettings.Temperature,
-                    MaxTokens = _apiSettings.MaxTokens
+                    new ChatMessage("user", questionQuery.GetText())
                 },
-                Models.TextDavinciV3);
+                TopP = _apiSettings.TopP,
+                Temperature = _apiSettings.Temperature,
+                MaxTokens = _apiSettings.MaxTokens
+            }, Models.Gpt_4);
 
             if (completionResult.Successful)
             {
-                return Results.OnSuccess<string>(completionResult.Choices.FirstOrDefault()!.Text);
+                return Results.OnSuccess<string>(completionResult.Choices.FirstOrDefault()!.Message.Content);
             }
             else
             {
